@@ -1,0 +1,27 @@
+---
+title: "StormDataAnalysis"
+author: "DL"
+date: "Sunday, May 17, 2015"
+output: html_document
+---
+
+The code blocks in this document make use of the **dplyr** and the **ggplot2** packages.
+```{r loadPackages, message=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+## Loading and preprocessing the data
+
+We unzip and load the data:
+```{r loadData}
+# ADD CODE TO DOWNLOAD DATA!
+dataZipFilePath = "./data/repdata_data_StormData.csv.bz2"
+dataFilePath <- unzip(dataZipFilePath) #exdir parameter required?
+data <- read.csv(dataFilePath)
+```
+
+Dates have been loaded as strings, so we type-cast them to the data type *Date*:
+```{r preprocessData}
+data$date <- as.Date(data$date, format = "%Y-%m-%d") 
+```
